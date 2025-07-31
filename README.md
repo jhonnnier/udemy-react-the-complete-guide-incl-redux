@@ -24,3 +24,8 @@ git push -u origin main
 git remote add origin https://github.com/jhonnnier/udemy-react-the-complete-guide-incl-redux.git
 git branch -M main
 git push -u origin main
+
+### run proyect
+
+npm install
+npm run dev
