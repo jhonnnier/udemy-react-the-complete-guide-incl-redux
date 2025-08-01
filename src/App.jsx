@@ -2,7 +2,8 @@ import {CORE_CONCEPTS} from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreComponent/CoreConcept.jsx";
 import CoreConceptDestructure from "./components/CoreComponent/CoreConceptDestructure.jsx";
-import reactImg from "./assets/react-core-concepts.png";
+import TapButton from "./components/TabButton/TapButton.jsx";
+import Card from "./components/Card/Card.jsx";
 
 function App() {
     return (
@@ -22,6 +23,36 @@ function App() {
                     </ul>
                 </section>
             </main>
+
+            <section id="examples">
+                <h2>Examples</h2>
+                <menu type="context">
+                    <TapButton id="tap-button-1"
+                               dataCy="tap-button-1"
+                               label="Components">
+                    </TapButton>
+                    <TapButton id="tap-button-2"
+                               dataCy="tap-button-2"
+                               label="JSX"
+                    ></TapButton>
+                    <TapButton id="tap-button-3"
+                               dataCy="tap-button-3"
+                               label="Props">
+                    </TapButton>
+                    <TapButton id="tap-button-4"
+                               dataCy="tap-button-3"
+                               label="State"
+                    ></TapButton>
+                </menu>
+            </section>
+
+            <section id="cars">
+                <div id="app">
+                    <h1>Available Experts</h1>
+                    <Card name="Maria"
+                          children="Miles"/>
+                </div>
+            </section>
         </div>
     );
 }
