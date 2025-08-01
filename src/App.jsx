@@ -5,9 +5,10 @@ import CoreConcept from "./components/CoreComponent/CoreConcept.jsx";
 import CoreConceptDestructure from "./components/CoreComponent/CoreConceptDestructure.jsx";
 import TapButton from "./components/TabButton/TapButton.jsx";
 import Card from "./components/Card/Card.jsx";
+import {EXAMPLES} from './data-with-examples.js'
 
 function App() {
-    const [selectedTopic, setSelectedTopic] = useState('please click a button');
+    const [selectedTopic, setSelectedTopic] = useState('components');
 
     function handleSelect(selectedButton) {
         // selectedButton => 'components', 'jsx', 'props', 'state'
@@ -56,8 +57,11 @@ function App() {
                                onSelect={() => handleSelect('state')}
                     ></TapButton>
                 </menu>
-
-                {selectedTopic}
+                <div id="tab-content">
+                    <h3>{EXAMPLES[selectedTopic].title}</h3>
+                    <p>{EXAMPLES[selectedTopic].description}</p>
+                    <pre>{EXAMPLES[selectedTopic].code}</pre>
+                </div>
             </section>
 
             <section id="cars">
