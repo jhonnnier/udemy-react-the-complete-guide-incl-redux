@@ -1,11 +1,10 @@
 import {useState} from 'react'
-import {CORE_CONCEPTS} from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreComponent/CoreConcept.jsx";
-import CoreConceptDestructure from "./components/CoreComponent/CoreConceptDestructure.jsx";
 import TapButton from "./components/TabButton/TapButton.jsx";
 import Card from "./components/Card/Card.jsx";
-import {EXAMPLES} from './data-with-examples.js'
+import {CORE_CONCEPTS, EXAMPLES} from './data-with-examples.js'
+import CoreConceptDestructure from "./components/CoreComponent/CoreConceptDestructure.jsx";
 
 function App() {
     const [selectedTopic, setSelectedTopic] = useState();
@@ -32,14 +31,17 @@ function App() {
                 <section id="core-concepts">
                     <h2>Core Concepts</h2>
                     <ul>
-                        <CoreConcept title={CORE_CONCEPTS[0].title}
-                                     description={CORE_CONCEPTS[0].title}
-                                     image={CORE_CONCEPTS[0].image}/>
-
-                        <CoreConcept {...CORE_CONCEPTS[1]}/>
-                        <CoreConceptDestructure {...CORE_CONCEPTS[2]}/>
-                        <CoreConceptDestructure {...CORE_CONCEPTS[3]}/>
+                        {CORE_CONCEPTS.map(cc =>
+                            <CoreConcept key={cc.title}
+                                         title={cc.title}
+                                         description={cc.description}
+                                         image={cc.image}
+                            ></CoreConcept>
+                        )}
                     </ul>
+
+                    <ul>{CORE_CONCEPTS.map(cc => <CoreConceptDestructure key={cc.title} {...cc}/>)}</ul>
+
                 </section>
             </main>
 
