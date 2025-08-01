@@ -15,17 +15,14 @@ function App() {
         setSelectedTopic(selectedButton);
     }
 
-    function getTabContent() {
-        let tabContent = <p>Please, select a topic.</p>;
+    let tabContent = <p>Please, select a topic.</p>;
 
-        if (selectedTopic) {
-            tabContent = (<div id="tab-content">
-                <h3>{EXAMPLES[selectedTopic].title}</h3>
-                <p>{EXAMPLES[selectedTopic].description}</p>
-                <pre>{EXAMPLES[selectedTopic].code}</pre>
-            </div>);
-        }
-        return tabContent;
+    if (selectedTopic) {
+        tabContent = (<div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>{EXAMPLES[selectedTopic].code}</pre>
+        </div>);
     }
 
     return (
@@ -53,25 +50,29 @@ function App() {
                                dataCy="tap-button-1"
                                label="Components"
                                onSelect={() => handleSelect('components')}
+                               isSelected={selectedTopic === 'components'}
                     ></TapButton>
                     <TapButton id="tap-button-2"
                                dataCy="tap-button-2"
                                label="JSX"
                                onSelect={() => handleSelect('jsx')}
+                               isSelected={selectedTopic === 'jsx'}
                     ></TapButton>
                     <TapButton id="tap-button-3"
                                dataCy="tap-button-3"
                                label="Props"
                                onSelect={() => handleSelect('props')}
+                               isSelected={selectedTopic === 'props'}
                     ></TapButton>
                     <TapButton id="tap-button-4"
                                dataCy="tap-button-3"
                                label="State"
                                onSelect={() => handleSelect('state')}
+                               isSelected={selectedTopic === 'state'}
                     ></TapButton>
                 </menu>
 
-                {getTabContent()}
+                {tabContent}
 
             </section>
 
