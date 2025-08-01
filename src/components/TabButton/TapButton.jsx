@@ -1,11 +1,12 @@
 import './TapButton.css'
 
-export default function TapButton(props) {
+export default function TapButton({id, dataCy, label, onSelect}) {
     return (
         <li>
-            <button id={props.id}
-                    data-cy={props.dataCy}>
-                {props.label}
+            <button id={id}
+                    data-cy={dataCy}
+                    onClick={onSelect}>
+                {label}
             </button>
         </li>
     );

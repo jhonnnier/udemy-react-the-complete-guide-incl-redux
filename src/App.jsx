@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {CORE_CONCEPTS} from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreComponent/CoreConcept.jsx";
@@ -6,6 +7,13 @@ import TapButton from "./components/TabButton/TapButton.jsx";
 import Card from "./components/Card/Card.jsx";
 
 function App() {
+    const [selectedTopic, setSelectedTopic] = useState('please click a button');
+
+    function handleSelect(selectedButton) {
+        // selectedButton => 'components', 'jsx', 'props', 'state'
+        setSelectedTopic(selectedButton);
+    }
+
     return (
         <div>
             <Header/>
@@ -29,21 +37,27 @@ function App() {
                 <menu type="context">
                     <TapButton id="tap-button-1"
                                dataCy="tap-button-1"
-                               label="Components">
-                    </TapButton>
+                               label="Components"
+                               onSelect={() => handleSelect('components')}
+                    ></TapButton>
                     <TapButton id="tap-button-2"
                                dataCy="tap-button-2"
                                label="JSX"
+                               onSelect={() => handleSelect('jsx')}
                     ></TapButton>
                     <TapButton id="tap-button-3"
                                dataCy="tap-button-3"
-                               label="Props">
-                    </TapButton>
+                               label="Props"
+                               onSelect={() => handleSelect('props')}
+                    ></TapButton>
                     <TapButton id="tap-button-4"
                                dataCy="tap-button-3"
                                label="State"
+                               onSelect={() => handleSelect('state')}
                     ></TapButton>
                 </menu>
+
+                {selectedTopic}
             </section>
 
             <section id="cars">
