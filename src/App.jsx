@@ -8,7 +8,7 @@ import Card from "./components/Card/Card.jsx";
 import {EXAMPLES} from './data-with-examples.js'
 
 function App() {
-    const [selectedTopic, setSelectedTopic] = useState('components');
+    const [selectedTopic, setSelectedTopic] = useState();
 
     function handleSelect(selectedButton) {
         // selectedButton => 'components', 'jsx', 'props', 'state'
@@ -57,11 +57,15 @@ function App() {
                                onSelect={() => handleSelect('state')}
                     ></TapButton>
                 </menu>
-                <div id="tab-content">
-                    <h3>{EXAMPLES[selectedTopic].title}</h3>
-                    <p>{EXAMPLES[selectedTopic].description}</p>
-                    <pre>{EXAMPLES[selectedTopic].code}</pre>
-                </div>
+
+                {!selectedTopic ? <p>Please, select a topic.</p> : (
+                    <div id="tab-content">
+                        <h3>{EXAMPLES[selectedTopic].title}</h3>
+                        <p>{EXAMPLES[selectedTopic].description}</p>
+                        <pre>{EXAMPLES[selectedTopic].code}</pre>
+                    </div>
+                )}
+
             </section>
 
             <section id="cars">
