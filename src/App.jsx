@@ -15,6 +15,19 @@ function App() {
         setSelectedTopic(selectedButton);
     }
 
+    function getTabContent() {
+        let tabContent = <p>Please, select a topic.</p>;
+
+        if (selectedTopic) {
+            tabContent = (<div id="tab-content">
+                <h3>{EXAMPLES[selectedTopic].title}</h3>
+                <p>{EXAMPLES[selectedTopic].description}</p>
+                <pre>{EXAMPLES[selectedTopic].code}</pre>
+            </div>);
+        }
+        return tabContent;
+    }
+
     return (
         <div>
             <Header/>
@@ -58,14 +71,7 @@ function App() {
                     ></TapButton>
                 </menu>
 
-                {!selectedTopic && <p>Please, select a topic.</p>}
-                {selectedTopic && (
-                    <div id="tab-content">
-                        <h3>{EXAMPLES[selectedTopic].title}</h3>
-                        <p>{EXAMPLES[selectedTopic].description}</p>
-                        <pre>{EXAMPLES[selectedTopic].code}</pre>
-                    </div>
-                )}
+                {getTabContent()}
 
             </section>
 
